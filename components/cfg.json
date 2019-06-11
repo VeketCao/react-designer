@@ -1,0 +1,495 @@
+{
+  "data":[
+    {
+      "name":"TextInput",
+      "description":"文本",
+      "type":"form",
+      "url":"components/build/TextInput/TextInput.js",
+      "i18nProps":"title,description,validMsg",
+      "attr":{
+        "title":"标题",
+        "content": "",
+        "fieldName":"TextInput",
+        "description": "",
+        "layout": "vertical",
+        "format": "text",
+        "type": "true",
+        "toValid":true,
+        "validMsg":"2-6个字符",
+        "row": 1,
+        "min":2,
+        "max":6,
+        "isRequired": "true",
+        "validRule":""
+      },
+      "children": [],
+      "editForm":{
+        "col":"input"
+      }
+    },
+    {
+      "name":"DateTimePicker",
+      "description":"日期",
+      "type":"form",
+      "url":"components/build/DateTimePicker/DateTimePicker.js",
+      "i18nProps":"title,description,validMsg",
+      "attr":{
+        "title":"日期",
+        "description":"",
+        "fieldName":"DateTimePicker",
+        "toValid":true,
+        "validMsg":"请输入日期",
+        "format":"y-m-d",
+        "validRule":"/.+/",
+        "isRequired": "true",
+        "locationTime": "true"
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"RadioBox",
+      "description":"单选",
+      "type":"form",
+      "url":"components/build/RadioBox/RadioBox.js",
+      "i18nProps":"title,description,options,validMsg",
+      "attr":{
+        "title":"单选按钮",
+        "fieldName":"RadioBox",
+        "options": ["选项一","选项二"],
+        "toValid":true,
+        "validMsg":"单选按钮不能为空",
+        "validRule":"/.+/",
+        "titleLayout":"hoz",
+        "description":"选我",
+        "isRequired":"true"
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"CheckBox",
+      "description":"多选",
+      "type":"form",
+      "url":"components/build/CheckBox/CheckBox.js",
+      "i18nProps":"title,description,options,validMsg",
+      "attr":{
+        "titleLayout":"hoz",
+        "description":"选我",
+        "options": ["选项一","选项二"],
+        "toValid":true,
+        "title":"多选框",
+        "fieldName":"CheckBox",
+        "validMsg":"复选框不能为空",
+        "validRule":"/.+/",
+        "isRequired": "true"
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"DropCheck",
+      "description":"下拉多选",
+      "type":"form",
+      "url":"components/build/DropCheck/DropCheck.js",
+      "i18nProps":"title,description,options,validMsg",
+      "attr":{
+        "title":"下拉复选框",
+        "fieldName":"DropCheck",
+        "toValid":true,
+        "optionList": [{"id": "16147985", "text": "扩音设备"}, {"id": "12458646", "text": "内部网络"}, {"id": "12481990", "text": "投影仪"}],
+        "options": ["扩音设备", "内部网络","投影仪"],
+        "validMsg":"下拉复选框不能为空",
+        "validRule":"/.+/",
+        "isRequired": "true"
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"DropDownBox",
+      "description":"下拉",
+      "type":"form",
+      "url":"components/build/DropDownBox/DropDownBox.js",
+      "i18nProps":"title,description,options,validMsg",
+      "attr":{
+        "title":"下拉框",
+        "titleLayout":"hoz",
+        "fieldName":"DropDownBox",
+        "toValid":true,
+        "options": ["选项一","选项二"],
+        "validMsg":"请选择下拉框",
+        "validRule":"/.+/",
+        "isRequired":"true"
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"NumberInput",
+      "description":"数字",
+      "type":"form",
+      "url":"components/build/NumberInput/NumberInput.js",
+      "i18nProps":"title,description,validMsg",
+      "attr":{
+        "title":"数字",
+        "fieldName":"NumberInput",
+        "toValid":true,
+        "layout": "vertical",
+        "min": 0,
+        "max": 0,
+        "validMsg":"请输入数字",
+        "isRequired": "true",
+        "validRule":"/.+/"
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"FileInput",
+      "description":"上传文件",
+      "type":"form",
+      "url":"components/build/FileInput/FileInput.js",
+      "i18nProps":"title,description,validMsg",
+      "attr":{
+        "title":"上传文件",
+        "fieldName":"FileInput",
+        "sizeLimit": true,
+        "size": 1,
+        "multiple": true,
+        "toValid":true,
+        "validMsg":"请上传文件",
+        "isRequired": "true",
+        "validRule":""
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"ReferenceFileInput",
+      "description":"参考附件",
+      "type":"form",
+      "url":"components/build/ReferenceFileInput/ReferenceFileInput.js",
+      "i18nProps":"title,description,validMsg",
+      "attr":{
+        "title":"参考附件",
+        "fieldName":"ReferenceFileInput",
+        "multiple": true,
+        "toValid":true,
+        "validMsg":"请上传文件",
+        "isRequired": "true",
+        "validRule":""
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"SubmitButton",
+      "description":"提交按钮",
+      "type":"form",
+      "url":"components/build/SubmitButton/SubmitButton.js",
+      "i18nProps":"title",
+      "attr":{
+        "title":"提交",
+        "fieldName":"button",
+        "description": "",
+        "api":""
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"Divider",
+      "description":"分割线",
+      "type":"form",
+      "url":"components/build/Divider/Divider.js",
+      "attr":{
+        "theme": 1,
+        "width": 1,
+        "color": ""
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"CitySelect",
+      "description":"地址",
+      "type":"form",
+      "url":"components/build/CitySelect/CitySelect.js",
+      "i18nProps":"title,description,validMsg",
+      "attr":{
+        "fieldName":"CitySelect",
+        "title":"城市选择",
+        "toValid":true,
+        "validMsg":"请选择城市",
+        "validRule":"/.+/",
+        "isRequired": "true"
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"TreeTemplate",
+      "description":"模板树组件",
+      "type":"base",
+      "url":"components/build/TreeTemplate/TreeTemplate.js",
+      "attr":{
+        "fieldName":"TreeTemplate"
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"DatePicker",
+      "description":"日期子组件",
+      "type":"base",
+      "url":"components/build/DatePicker/DatePicker.js",
+      "attr":{
+        "fieldName":"DatePicker"
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"Structure",
+      "description":"部门弹框",
+      "type":"base",
+      "url":"components/build/Structure/Structure.js",
+      "i18nProps":"title",
+      "attr":{
+        "fieldName":"Structure",
+        "title":"部门选择",
+        "toValid":true,
+        "validMsg":"部门弹框",
+        "validRule":"/.+/",
+        "dataSource": [
+          {
+            "name": "根据获取部门信息",
+            "value": "http://10.24.64.183:8082/tree/getDepartmentById",
+            "param": "id=d_1460494117"
+          },
+          {
+            "name": "根据人员信息",
+            "value": "http://10.24.64.183:8082/tree/getPersonsByParentId",
+            "param": ""
+          }
+        ]
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"StructureInput",
+      "description":"选择部门",
+      "type":"form",
+      "url":"components/build/StructureInput/StructureInput.js",
+      "i18nProps":"title,description,validMsg",
+      "attr":{
+        "title":"选择部门",
+        "fieldName":"StructureInput",
+        "toValid":true,
+        "validMsg":"请选择部门",
+        "validRule":"/.+/",
+        "isRequired":"true",
+        "dataSource": [
+          {
+            "name": "根据获取部门信息",
+            "value": "http://10.24.64.183:8082/tree/getDepartmentById",
+            "param": "id=d_1460494117"
+          },
+          {
+            "name": "根据人员信息",
+            "value": "http://10.24.64.183:8082/tree/getPersonsByParentId",
+            "param": ""
+          }
+        ]
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"SeekBar",
+      "description":"拖拽进度条",
+      "type":"base",
+      "url":"components/build/SeekBar/SeekBar.js",
+      "attr":{
+        "fieldName":"SeekBar"
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"TimePicker",
+      "description":"时间选择",
+      "type":"form",
+      "url":"components/build/TimePicker/TimePicker.js",
+      "i18nProps":"title,description,validMsg",
+      "attr":{
+        "title":"时间",
+        "fieldName":"TimePicker",
+        "isRequired":"",
+        "validMsg":""
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"EmailInput",
+      "description":"邮箱",
+      "type":"form",
+      "url":"components/build/EmailInput/EmailInput.js",
+      "i18nProps":"title,description,validMsg",
+      "attr":{
+        "title":"邮箱",
+        "fieldName":"EmailInput",
+        "layout": "vertical",
+        "toValid":true,
+        "isRequired":"true",
+        "validMsg":"不是正确的邮箱格式"
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"PhoneInput",
+      "description":"手机",
+      "type":"form",
+      "url":"components/build/PhoneInput/PhoneInput.js",
+      "i18nProps":"title,description,validMsg",
+      "attr":{
+        "title":"手机",
+        "fieldName":"PhoneInput",
+        "layout": "vertical",
+        "toValid":true,
+        "isRequired":"true",
+        "validMsg":"不是正确的手机号码格式"
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"DateTimeBetweenPicker",
+      "description":"日期/时间区间",
+      "type":"form",
+      "url":"components/build/DateTimeBetweenPicker/DateTimeBetweenPicker.js",
+      "i18nProps":"title,description,validMsg",
+      "attr":{
+        "title":"日期",
+        "description":"",
+        "fieldName":"DateTimeBetweenPicker",
+        "toValid":true,
+        "validMsg":"请输入日期",
+        "format":"y-m-d",
+        "validRule":"/.+/",
+        "isRequired":"true",
+        "locationTime": "true"
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"DepartmentMember",
+      "description":"人员选择对话框",
+      "type":"base",
+      "url":"components/build/DepartmentMember/DepartmentMember.js",
+      "attr":{
+        "fieldName":"DepartmentMember",
+        "dataSource": [
+          {
+            "name": "根据获取部门信息",
+            "value": "http://10.24.64.183:8082/tree/getDepartmentById",
+            "param": "id=d_1460494117"
+          },
+          {
+            "name": "根据人员信息",
+            "value": "http://10.24.64.183:8082/tree/getPersonsByParentId",
+            "param": ""
+          }
+        ]
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"DepartmentMemberInput",
+      "description":"选择人员",
+      "type":"form",
+      "url":"components/build/DepartmentMemberInput/DepartmentMemberInput.js",
+      "i18nProps":"title,description,validMsg",
+      "attr":{
+        "fieldName":"DepartmentMemberInput",
+        "title":"人员",
+        "toValid":true,
+        "validMsg":"请选择人员",
+        "validRule":"/.+/",
+        "isRequired":"true",
+        "dataSource": [
+          {
+            "name": "根据获取部门信息",
+            "value": "http://10.24.64.183:8082/tree/getDepartmentById",
+            "param": "id=d_1460494117"
+          },
+          {
+            "name": "根据人员信息",
+            "value": "http://10.24.64.183:8082/tree/getPersonsByParentId",
+            "param": ""
+          }
+        ]
+      },
+      "editForm":{
+      }
+    },
+    {
+      "name":"DescriptionInput",
+      "description":"描述说明",
+      "type":"form",
+      "url":"components/build/DescriptionInput/DescriptionInput.js",
+      "i18nProps":"content",
+      "attr":{
+        "title":"标题",
+        "content":"描述说明内容",
+        "fieldName":"description",
+        "description": "",
+        "toValid":true,
+        "validMsg":"2-6个字符",
+        "isRequired":true,
+        "validRule":""
+      },
+      "editForm":{
+        "col":"input"
+      }
+    },
+    {
+      "name":"TextLink",
+      "description":"文字链接",
+      "type":"form",
+      "url":"components/build/TextLink/TextLink.js",
+      "i18nProps":"title,validMsg",
+      "attr":{
+        "title":"标题",
+        "linkTitle": "http://",
+        "fieldName":"textLink",
+        "fieldNameForLink":"link",
+        "toValid":true,
+        "validMsg":"标题不能为空",
+        "validMsgForLink":"超链接格式不正确",
+        "minLength":1,
+        "isRequired":true,
+        "validRule":"function(v){if(v&&v.length>1) return true;else return false;}",
+        "validRuleForLink":"function(v){if(v&&v.length>1) return true;else return false;}"
+      },
+      "editForm":{
+        "col":"input"
+      }
+    },
+    {
+      "name":"ColumnPanel",
+      "description":"布局控件",
+      "type":"layout",
+      "url":"components/build/ColumnPanel/ColumnPanel.js",
+      "attr":{
+        "options": [["2","1:1"],["3","1:1:1"],["4","1:2:1"]]
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+<script id="template-SubmitButton" type="text/html">
+    <h2 class="template-title">控件编辑</h2>
+    <input type="hidden" name="instid" value="{{instid}}" />
+    <div class="template-doc">
+        <div class="input-group">
+            <label class="input-title">按钮名称:</label>
+            <div class="input-container">
+                {{if i18nProps.split("\,").indexOf("title")>-1}}
+                {{each langs}}
+                {{if $value == 'zh'}}
+                <input type="hidden" name="{{$value+'_title'}}" data-value="i18n_title" value="{{attr.title}}">
+                {{else}}
+                <input type="hidden" name="{{$value+'_title'}}" data-value="i18n_title" value="">
+                {{/if}}
+                {{/each}}
+                {{/if}}
+                <p style="position: relative;"><input id="input-title" type="text" name="title" placeholder="请输入标题" class="input-box" value="{{attr.title}}">{{if i18nProps.split("\,").indexOf("title")>-1}}{{if langs.length > 0}}<i class="international-icon" id="i18n_title"></i>{{/if}}{{/if}}</p>
+            </div>
+        </div>
+        <div class="input-group">
+            <label class="input-title">ID:</label>
+            <p class="input-container"><input type="text" name="fieldName" class="input-box" value="{{attr.fieldName}}"></p>
+        </div>
+        <div class="input-group">
+            <label class="input-title">备注:</label>
+            <p class="input-container"><input type="text" name="description" class="input-box" value=""></p>
+        </div>
+    </div>
+</script>

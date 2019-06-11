@@ -1,0 +1,55 @@
+<script id="template-TimePicker" type="text/html">
+    <h2 class="template-title">控件编辑</h2>
+    <input type="hidden" name="instid" value="{{instid}}" />
+    <div class="template-doc">
+        <div class="input-group">
+            <label class="input-title">标题:</label>
+            <div class="input-container">
+                {{if i18nProps.split("\,").indexOf("title")>-1}}
+                {{each langs}}
+                {{if $value == 'zh'}}
+                <input type="hidden" name="{{$value+'_title'}}" data-value="i18n_title" value="{{attr.title}}">
+                {{else}}
+                <input type="hidden" name="{{$value+'_title'}}" data-value="i18n_title" value="">
+                {{/if}}
+                {{/each}}
+                {{/if}}
+                <p style="position: relative;"><input id="input-title" type="text" name="title" placeholder="请输入标题" class="input-box" value="{{attr.title}}">{{if i18nProps.split("\,").indexOf("title")>-1}}{{if langs.length > 0}}<i class="international-icon" id="i18n_title"></i>{{/if}}{{/if}}</p>
+            </div>
+        </div>
+        <div class="input-group">
+            <label class="input-title">ID:</label>
+            <div class="input-container"><input type="text" name="fieldName" class="input-box" value="{{attr.fieldName}}"></div>
+        </div>
+        <div class="input-group">
+            <label class="input-title">备注:</label>
+            <div class="input-container">
+                {{if i18nProps.split("\,").indexOf("description")>-1}}
+                {{each langs}}
+                {{if $value == 'zh'}}
+                <input type="hidden" name="{{$value+'_description'}}" data-value="i18n_description" value="{{attr.description}}">
+                {{else}}
+                <input type="hidden" name="{{$value+'_description'}}" data-value="i18n_description" value="">
+                {{/if}}
+                {{/each}}
+                {{/if}}
+                <p style="position: relative;"><input type="text" name="description" class="input-box" value="{{attr.description}}">{{if i18nProps.split("\,").indexOf("description")>-1}}{{if langs.length > 0}}<i class="international-icon" id="i18n_description"></i>{{/if}}{{/if}}</p>
+            </div>
+        </div>
+        <div class="dashed-box"></div>
+        <!--<div class="input-group">-->
+            <!--<label class="input-title">分钟间隔：</label>-->
+            <!--<p class="input-container">-->
+                <!--<select name="format" style="height: 26px;">-->
+                    <!--<option value="y-m-d">1分钟</option>-->
+                    <!--<option value="m-d-y">15分钟</option>-->
+                    <!--<option value="d-m-y">30分钟</option>-->
+                <!--</select>-->
+            <!--</p>-->
+        <!--</div>-->
+        <div class="dashed-box"></div>
+        <div class="input-group">
+            <!--<button class="a-gray-btn select-api" type="button">选择接口</button>-->
+        </div>
+    </div>
+</script>

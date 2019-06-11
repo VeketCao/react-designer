@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预览</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <!--<link rel="stylesheet" href="css/base.css">-->
+    <link rel="stylesheet" href="css/common.css">
+    <!--<link rel="stylesheet" href="css/jquery.ui.css">-->
+    <!--<link rel="stylesheet" href="lib/react/amazeui.min.css">-->
+    <script src="lib/react/react.min.js"></script>
+    <script src="lib/react/react-dom.min.js" ></script>
+    <!--<script src="lib/immutable/immutable.min.js" ></script>-->
+    <!--<script src="lib/react/amazeui.react.min.js"></script>-->
+    <script src="lib/util/util.min.js"></script>
+    <script src="lib/jquery/jquery.cookie.min.js"></script>
+    <script src="lib/layer/layer.js"></script>
+    <script src="js/app-util.js"></script>
+    <script src="js/ColumnPanel.js"></script>
+    <script src="js/config.js"></script>
+    <script>
+        var componentList = [];
+        /**预览**/
+        var previewHandle = function(){
+            var cfg = localStorage.getItem("cfg");
+            AppUtil.parseConfigToHtml(JSON.parse(cfg)).appendTo($(".page-view"));
+            //console.log(AppUtil.parseConfigToHtml(JSON.parse(cfg)));
+        };
+
+        /**加载组件js**/
+        var loadComponents = function() {
+            var lc = JSON.parse(localStorage.getItem("cfg"));
+            var loadArr = _.pluck(lc.items, 'component');
+
+            _.map(_.pluck(lc.items, 'children'), function (child, i) {
+                _.map(child, function (c) {
+                    if (_.indexOf(loadArr, c) == -1) {
+                        loadArr.push(c)
+                    }
+                })
+            })
+            //console.log(loadArr);
+            http(WD_API.getDataSourceApi + FORM_ENGINE_API.load_components,{
+                'componentType': '1',
+            },{
+                type: 'POST',
+                dataType: "jsonp"
+            }).done(function(msg) {
+                if(msg.success == true) {
+                    if(_.isEmpty(msg.data)) return;
+                    _.each(msg.data,function (d) {
+                        loadArr.push(d.fdName);
+                    });
+                    loadInitComponentsFormUrl(loadArr,0,previewHandle);
+                } else {
+                    layer.msg('获取控件信息失败',{icon:1,time:2000});
+                }
+            }).fail(function() {
+                layer.msg('获取控件信息失败',{icon:1,time:2000});
+            });
+
+            /*http(WD_API.getDataSourceApi + FORM_ENGINE_API.load_components,{
+                'componentType': '0',
+            },{
+                type: 'POST',
+                dataType: "jsonp"
+            }).done(function(msg) {
+                $('#nav-list-init').css('display','none');
+                if(msg.success == true) {
+                    if(_.isEmpty(msg.data)) return;
+                    var nameArr = [];
+                    _.each(msg.data,function (d) {
+                        nameArr.push(d.fdName);
+                    });
+                    http(WD_API.getDataSourceApi + FORM_ENGINE_API.load_components,{
+                        'componentType': '1',
+                    },{
+                        type: 'POST',
+                        dataType: "jsonp"
+                    }).done(function(msg) {
+                        if(msg.success == true) {
+                            if(_.isEmpty(msg.data)) return;
+                            _.each(msg.data,function (d) {
+                                nameArr.push(d.fdName);
+                            });
+                            loadInitComponentsFormUrl(nameArr,0,previewHandle);
+                        } else {
+                            layer.msg('获取控件信息失败',{icon:1,time:2000});
+                        }
+                    }).fail(function() {
+                        layer.msg('获取控件信息失败',{icon:1,time:2000});
+                    });
+                } else {
+                    layer.msg('获取控件信息失败',{icon:1,time:2000});
+                }
+            }).fail(function() {
+                layer.msg('获取控件信息失败',{icon:1,time:2000});
+            });*/
+
+            /*http('components/cfg.json').done(function(rtn){
+                if(_.isEmpty(rtn.data)) return;
+                AppUtil.loadComponentJs(_.pluck(rtn.data,'url'),previewHandle);
+            });*/
+        };
+
+        /**
+         * 加载组件
+         */
+        var loadInitComponentsFormUrl = function(arr,index,cb) {
+            http(WD_API.getDataSourceApi + FORM_ENGINE_API.get_component_config, {
+                'fdName': arr[index],
+            },{
+                type: 'POST',
+                dataType: "jsonp"
+            }).done(function(msg) {
+                if(msg.success == true) {
+                    if(_.isEmpty(msg.data)) return;
+                    var o = msg.data;
+                    var dt = new Date();
+                    dt.setMinutes(0, 0, 0);
+                    var timestamp = Date.parse(dt);
+                    o.url = o.publicSrc + o.name + '.js?_t=' + timestamp;
+                    componentList.push(o);
+                }
+                index++;
+                if (index < arr.length) {
+                    loadInitComponentsFormUrl(arr,index,cb)
+                }
+                if (index == arr.length) {
+                    AppUtil.loadComponentJs(_.pluck(componentList,'url'), cb);
+                }
+            }).fail(function() {
+                layer.msg('获取控件信息失败',{icon:1,time:2000});
+            })
+        }
+    </script>
+</head>
+<body onload="loadComponents()">
+<div class="page-preview page-view"></div>
+</body>
+</html>

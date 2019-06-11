@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单设计器</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/jquery.ui.css">
+    <!--<link rel="stylesheet" href="lib/react/amazeui.min.css">-->
+    <link rel="stylesheet" href="css/base.css">
+    <script src="lib/react/browser.min.js"></script>
+    <script src="lib/react/react.min.js"></script>
+    <script src="lib/react/react-dom.min.js" ></script>
+    <!--<script src="lib/immutable/immutable.min.js" ></script>-->
+    <!--<script src="lib/react/amazeui.react.min.js"></script>-->
+    <script src="lib/util/util.min.js"></script>
+    <script src="lib/jquery/jquery.cookie.min.js"></script>
+    <script src="lib/jquery/jqueryui.min.js"></script>
+    <script src="lib/layer/layer.js"></script>
+    <script src="js/app-util.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        var langs = ["zh","en"] || '';
+    </script>
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <figure class="pull-left logo"><a></a></figure>
+        <h1 class="pull-left fts18">设计表单</h1>
+        <div class="header-tabs">
+            <ul class="header-tabs-ul">
+                <li class="header-tabs-li curr" data-for-index="0" style="margin-right: 20px">配置控件</li>
+                <li class="header-tabs-li" data-for-index="1">配置权限</li>
+            </ul>
+        </div>
+        <div class="pull-right tool-btn">
+            <a id="preview_btn" class="preview-ico"><i class="ico"></i>预览</a>
+            <!--<a id="printout_btn" class="print-ico"><i class="ico"></i>导出</a>-->
+            <a id="save_btn" class="save-ico"><i class="ico"></i>保存</a>
+        </div>
+    </div>
+</header>
+<section class="section section-form layout">
+    <div class="left-nav pull-left">
+        <ul class="nav-header-tabs">
+            <li class="header-tab" data-for-index="0">布局组件</li>
+            <li class="header-tab curr" data-for-index="1">字段组件</li>
+            <span class="tabs-bottom-bar"></span>
+        </ul>
+        <ul class="nav-list" style="display: none">
+            <!--<li class="nav-header"><span>布局控件</span></li>-->
+            <li class="list-item" id="layout-list">
+                <!--<div class="widget-item layout_js ui-draggable" title="拖拽至页面中间区域" component="ColumnPanel" type="2">-->
+                    <!--<span>1:1</span>-->
+                <!--</div>-->
+                <!--<div class="widget-item layout_js ui-draggable" title="拖拽至页面中间区域" component="ColumnPanel" type="3">-->
+                    <!--<span>1:1:1</span>-->
+                <!--</div>-->
+                <!--<div class="widget-item layout_js ui-draggable" title="拖拽至页面中间区域" component="ColumnPanel" type="4">-->
+                    <!--<span>1:2:1</span>-->
+                <!--</div>-->
+            </li>
+        </ul>
+        <ul id="nav-list-init" class="nav-list user-defind-scrollbar">
+            <!--<li class="nav-header"><span>字段控件</span></li>-->
+            <li class="list-item" id="component-list"></li>
+        </ul>
+        <div class="loading-data" id="loading-data">玩命加载中。。。</div>
+    </div>
+
+    <div class="wd-container">
+        <div class="page-view">
+            <div class="page-info" id="form-page-info">
+                <h2 class="form-title">表单标题</h2>
+                <p class="form-description"></p>
+            </div>
+            <div id="widget-control" class="widget-control ui-sortable">
+            </div>
+        </div>
+    </div>
+    <div class="edit-container" id="edit-container">
+        <div class="edit-area-form user-defind-scrollbar">
+            <form id="edit-area-form">
+                <!-- 编辑区域，需要加载对应模板 -->
+                <div class="edit-area-body" style="display: none">
+                    <div class="edit-area-top">
+                        <ul class="edit-config-list">
+                            <li class="feature"><a class="a-gray-btn"><i class="ico"></i>外观设置</a></li>
+                            <li class="logic"><a class="a-gray-btn"><i class="ico"></i>逻辑设置</a></li>
+                        </ul>
+                    </div>
+                    <div id="edit-area"></div>
+                </div>
+                <div class="edit-component" id="edit-component">
+                    <p class="alert-danger"><i class="icon-warn"></i>请先选择组件</p>
+                    <!--<div style="text-align: right">-->
+                        <!--<button type="button" class="a-blue-btn" id="edit-area-submit" style="display: none;">提交</button>-->
+                    <!--</div>-->
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<section class="section section-form ath" style="display: none">
+    <form id="ath-edit-form">
+        <div class="ath-container">
+            <div class="ath-control">
+                <div id="ath-area" class="ath-area">
+                    <div class="input-group">
+                        <label class="input-title">当前表单:</label>
+                        <p class="input-container"><label class="input-label" id="ath-form-name">表单标题</label><a href="javascript:void(0);" id="" class="preview-ico"></a></p>
+                    </div>
+                    <div class="dashed-box"></div>
+                    <div class="input-group">
+                        <label class="input-title">可使用者:</label>
+                        <p class="input-container">
+                            <label class="el-component el-radio"><span class="el-radio-input"><input class="el-radio-original" type="radio" name="availableType" value="allUser"><i></i></span><span class="el-label">所有人</span></label>
+                            <label class="el-component el-radio"><span class="el-radio-input"><input class="el-radio-original" type="radio" name="availableType" value="special" checked="checked"><i></i></span><span class="el-label">特定人员</span></label>
+                            <br />
+                            <input id="availableUser-hidden" class="el-form-field" type="hidden" name="availableUser" value="">
+                            <span id="available-control">
+                                <input class="el-form-field" type="text" name="availableUserName" value="">
+                            </span>
+                        </p>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-title">可维护者:</label>
+                        <p class="input-container">
+                            <label class="el-component el-radio"><span class="el-radio-input"><input class="el-radio-original" type="radio" name="maintainType" value="allUser"><i></i></span><span class="el-label">所有人</span></label>
+                            <label class="el-component el-radio"><span class="el-radio-input"><input class="el-radio-original" type="radio" name="maintainType" value="special" checked="checked"><i></i></span><span class="el-label">特定人员</span></label>
+                            <br />
+                            <input id="maintainUser-hidden" class="el-form-field" type="hidden" name="maintainUser" value="">
+                            <span id="maintain-control">
+                                <input class="el-form-field" type="text" name="maintainUserName" value="">
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+<!--<div id="popup_win" class="page-preview page-view"></div>-->
+<!--<div id="selectAPI_win" class="page-preview page-view"></div>-->
+<div id="template-html"></div>
+</body>
+</html>

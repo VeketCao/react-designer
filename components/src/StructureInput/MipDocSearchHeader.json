@@ -1,0 +1,22 @@
+{
+  "name": "MipDocSearchHeader",
+  "description": "公文筛选条件",
+  "type": "base",
+  "url": "",
+  "attr": {
+    "data": ""
+  },
+  "editorForm": {
+
+  },
+  "children":[
+    "Filter",
+    "MipPager",
+    "DatePicker",
+    "CheckBox",
+    "Radio",
+    "Structure",
+    "TreeTemplate",
+    "Button"
+  ]
+}

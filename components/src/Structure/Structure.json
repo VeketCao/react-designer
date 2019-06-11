@@ -1,0 +1,15 @@
+{
+  "name": "Structure",
+  "description": "组织架构",
+  "type": "base",
+  "url": "",
+  "attr": {
+  },
+  "editorForm": {
+  },
+  "children": [
+    "Button",
+    "CheckBox",
+    "TreeTemplate"
+  ]
+}

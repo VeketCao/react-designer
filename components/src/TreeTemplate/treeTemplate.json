@@ -1,0 +1,15 @@
+{
+  "name": "TreeTemplate",
+  "description": "树形结构菜单",
+  "type": "base",
+  "url": "",
+  "attr": {
+  },
+  "editorForm": {
+  },
+  "children": [
+    "Label",
+    "Filter",
+    "Button"
+  ]
+}

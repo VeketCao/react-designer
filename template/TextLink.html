@@ -1,0 +1,31 @@
+<script id="template-TextLink" type="text/html">
+    <h2 class="template-title">控件编辑</h2>
+    <input type="hidden" name="instid" value="{{instid}}" />
+    <div class="template-doc">
+        <div class="input-group">
+            <label>内容:</label>
+            {{if i18nProps.split("\,").indexOf("title")>-1}}
+            {{each langs}}
+            {{if $value == 'zh'}}
+            <input type="hidden" name="{{$value+'_title'}}" data-value="i18n_title" value="{{attr.title}}">
+            {{else}}
+            <input type="hidden" name="{{$value+'_title'}}" data-value="i18n_title" value="">
+            {{/if}}
+            {{/each}}
+            {{/if}}
+            <p style="position: relative;"><textarea id="input-title" type="text" cols="2" name="title" placeholder="链接标题" class="textarea-box">{{attr.title}}</textarea>{{if i18nProps.split("\,").indexOf("title")>-1}}{{if langs.length > 0}}<i class="international-icon" id="i18n_title"></i>{{/if}}{{/if}}</p>
+        </div>
+        <div class="input-group">
+            <label class="input-title">链接:</label>
+            <div class="input-container"><input id="input-link" type="text" name="linkTitle" placeholder="例如:https://www.baidu.com" class="input-box" value="{{attr.linkTitle}}"><span id="warnMessage" style="color: #ff0000"></span></div>
+        </div>
+        <div class="input-group">
+            <label class="input-title">ID:</label>
+            <div class="input-container"><input type="text" name="fieldName" class="input-box" value="{{attr.fieldName}}"></div>
+        </div>
+        <div class="dashed-box"></div>
+        <div class="input-group">
+            <!--<button class="a-gray-btn select-api" type="button">选择接口</button>-->
+        </div>
+    </div>
+</script>

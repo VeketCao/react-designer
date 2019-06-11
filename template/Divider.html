@@ -1,0 +1,36 @@
+<script id="template-Divider" type="text/html">
+    <h2 class="template-title">控件编辑</h2>
+    <input type="hidden" name="instid" value="{{instid}}" />
+    <div class="template-doc">
+        <!--<div class="input-group vertical">-->
+            <!--<label>ID</label>-->
+            <!--<input type="text" name="fieldName" class="input-box" value="{{attr.fieldName}}">-->
+        <!--</div>-->
+        <div class="input-group">
+            <label class="input-title">线宽:</label>
+            <p class="input-container">
+                <select name="width">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </p>
+        </div>
+        <div class="input-group">
+            <label class="input-title">样式:</label>
+            <p class="input-container">
+                <select name="theme">
+                    <option value="1">默认</option>
+                    <option value="2">虚线一</option>
+                    <option value="3">虚线二</option>
+                </select>
+            </p>
+        </div>
+        <div class="input-group">
+            <label class="input-title">颜色:</label>
+            <p class="input-container"><input type="text" name="color" placeholder="例如:#000000" class="input-box" value="{{attr.color}}"></p>
+        </div>
+    </div>
+</script>
